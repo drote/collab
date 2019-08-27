@@ -7,8 +7,13 @@ import CommentFormContainer from '../innerCard/CommentFormContainer';
 import ActivityListContainer from '../innerCard/ActivityListContainer';
 import Header from '../innerCard/Header';
 import ButtonsList from '../innerCard/ButtonsList';
+import DatePopover from '../shared/DatePopover';
 
 class CardModal extends React.Component {
+  state = {
+    editingDate: false,
+  }
+
   componentDidMount() {
     this.props.fetchCard();
   }
@@ -26,7 +31,13 @@ class CardModal extends React.Component {
         />
         </div>
       </li>
-    ) 
+    )
+  }
+
+  handleToggleEditDate = () => {
+    this.setState({
+      editingDate: !this.state.editingDate
+    });
   }
 
   render() {
@@ -59,6 +70,7 @@ class CardModal extends React.Component {
               <DetailsSection
                 {...card}
                 onUpdateCard={this.props.onUpdateCard}
+                onToggleEditDate={this.handleToggleEditDate}
               />
 
               {this.commentForm(card.id)}
@@ -71,7 +83,18 @@ class CardModal extends React.Component {
           <ButtonsList
             card={card}
             onUpdateCard={this.props.onUpdateCard}
+            onToggleEditDate={this.handleToggleEditDate}
           />
+
+          { this.state.editingDate ?
+              <DatePopover
+                onUpdateCard={this.props.onUpdateCard}
+                closePopover={() => this.setState({editingDate: false})}
+                onRemoveDueDate={this.props.onRemoveDueDate}
+              />
+            :
+              null
+          }
 
         </div>
       </div>

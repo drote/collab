@@ -1,6 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 import CardDescription from './CardDescription';
+import DueDate from './dueDate';
 
 const getLabels = (labels) => {
 	return labels.map((l, i) => {
@@ -27,42 +27,24 @@ const cardLabels = (labels) => {
   );
 }
 
-const dueDateTemplate = (dueDate, completed) => {
-  if (!dueDate) return null;
-
-  const dateClass = getDateClass(dueDate, completed);
-
-  return (
-    <li className="due-date-section">
-      <h3>Due Date</h3>
-      <div id="dueDateDisplay" className={dateClass}>
-        <input id="dueDateCheckbox" type="checkbox" className="checkbox" defaultChecked={false} />
-      	{moment(dueDate).format('MMM D [at] hh:mm a')}
-      	<span>{ dateClass === 'overdue' ? '(past due)' : ''}</span>
-      </div>
-    </li>
-  );
-}
-
-const getDateClass = (dueDate, completed) => {
-	if (completed) {
-		return ' completed';
-	} else if (moment(dueDate).isBetween(moment(), moment().subtract(2, 'days'))) {
-		return ' due-soon';
-	} else if (moment().isAfter(dueDate)) {
-		return ' overdue';
-	} else {
-		return 'due-later';
-	}
-};
-
-const DetailsSection = ({ labels, due_date, completed, description, onUpdateCard }) => {	
+const DetailsSection = ({ 
+  labels,
+  due_date,
+  completed,
+  description,
+  onUpdateCard,
+  onToggleEditDate
+}) => {	
 	return (
     <li className="details-section">
     
       <ul className="modal-details-list">
         { cardLabels(labels) }
-        { dueDateTemplate(due_date, completed) }
+        <DueDate
+          dueDate={due_date}
+          completed={completed}
+          onToggleEditDate={onToggleEditDate}
+        />
       </ul>
       
       <CardDescription

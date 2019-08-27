@@ -16,7 +16,12 @@ class DatePopover extends React.Component {
 				<div style={{top: '100px', right: '100px'}} className="popover due-date">
 				  <header>
 				    <span>Change due date</span>
-				    <a href="#" className="icon-sm icon-close"></a>
+				    <a
+				    	href="#"
+				    	className="icon-sm icon-close"
+				    	onClick={this.props.closePopover}
+				    >
+				    </a>
 				  </header>
 				  <div className="content">
 				    <form>
@@ -39,12 +44,25 @@ class DatePopover extends React.Component {
 				      	className="button"
 				      	type="submit"
 				      	onClick={() => {
-				      		this.props.onUpdateCard({due_date: this.pikaday.toString()});
+				      		this.props.onUpdateCard({
+				      			due_date: this.pikaday.toString()
+				      		});
+				      		this.props.closePopover();
 				      	}}
 				      >
 				      	Save
 				      </button>
-				      <button className="button red-button" type="reset">Remove</button>
+				      <button
+				      	className="button red-button"
+				      	type="reset"
+				      	onClick={() => {
+				      		this.props.onUpdateCard({
+				      			due_date: null
+				      		});
+				      		this.props.closePopover();
+				      	}}
+				      >Remove
+				      </button>
 				    </form>
 				  </div>
 				</div>

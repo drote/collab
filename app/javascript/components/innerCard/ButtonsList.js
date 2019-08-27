@@ -8,6 +8,7 @@ const ButtonsList = (props) => {
       <h2>Add</h2>
       	<AddButtons
           onUpdateCard={props.onUpdateCard}
+          onToggleEditDate={props.onToggleEditDate}
         />
       <h2>Actions</h2>
       	<ActionButtons

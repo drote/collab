@@ -1,7 +1,6 @@
 
 
 export const getListsFromBoard = (state, boardId) => {
-  console.log(boardId);
   return state.lists.filter(l => l.board_id === boardId);
 }
 
