@@ -1,0 +1,10 @@
+export const BOARDS_INDEX_URL = '/api/boards';
+export const CREATE_BOARD_URL = '/api/boards';
+export const getBoardUrl = (id) => `/api/boards/${id}`;
+export const editListUrl = (id) => `/api/lists/${id}`;
+export const ADD_LIST_URL = '/api/lists';
+export const ADD_CARD_URL = '/api/cards';
+export const cardUrl = (id) => `/api/cards/${id}`;
+export const ADD_COMMENT_URL = '/api/comments';
+export const commentUrl = (id) => `/api/comments/${id}`;
+export const ADD_ACTION_URL = '/api/actions';
