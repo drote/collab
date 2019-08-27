@@ -1,7 +1,6 @@
 export const getActionText = (attrs) => {
 	const change = Object.keys(attrs)[0];
 	let verb;
-	console.log(attrs);
 
 	switch (change) {
 		case 'archived':

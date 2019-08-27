@@ -8,10 +8,12 @@ import ActivityListContainer from '../innerCard/ActivityListContainer';
 import Header from '../innerCard/Header';
 import ButtonsList from '../innerCard/ButtonsList';
 import DatePopover from '../shared/DatePopover';
+import LabelsPopover from '../shared/LabelsPopover';
 
 class CardModal extends React.Component {
   state = {
     editingDate: false,
+    editingLabels: true
   }
 
   componentDidMount() {
@@ -96,6 +98,14 @@ class CardModal extends React.Component {
               null
           }
 
+          { this.state.editingLabels ?
+              <LabelsPopover
+              labels={card.labels}
+              onHandleLabelClick={this.props.onUpdateCard}
+              />
+            :
+              null
+          }
         </div>
       </div>
     );

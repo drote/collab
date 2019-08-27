@@ -1,6 +1,6 @@
 import React from 'react';
 import CardDescription from './CardDescription';
-import DueDate from './dueDate';
+import DueDate from './DueDate';
 
 const getLabels = (labels) => {
 	return labels.map((l, i) => {
