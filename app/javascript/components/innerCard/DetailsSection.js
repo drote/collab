@@ -44,6 +44,7 @@ const DetailsSection = ({
           dueDate={due_date}
           completed={completed}
           onToggleEditDate={onToggleEditDate}
+          onUpdateCard={onUpdateCard}
         />
       </ul>
       
