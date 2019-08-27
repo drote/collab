@@ -11,5 +11,7 @@ export const getActionText = (attrs) => {
 			return `has ${verb} the due date.`;
 		case 'description':
 			return 'has changed the description';
+		case 'labels':
+			return 'has changed the labels';
 	}
 }

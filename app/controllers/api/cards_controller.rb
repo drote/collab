@@ -22,19 +22,6 @@ class Api::CardsController < ApplicationController
 	def update
 		@card = Card.find(params[:id])
 
-		if params[:card]['labels']
-			label = params[:card]['labels'][0]
-
-			if @card.labels.include? label
-				labels = @card.labels.clone
-				labels.delete label
-			else
-				labels = @card.labels.clone.push label
-			end
-
-			card_params = {labels: labels}
-		end
-
 		if @card.update(card_params)
 			render :update
 		else
@@ -50,6 +37,6 @@ class Api::CardsController < ApplicationController
 	private
 
 	def card_params
-		params.require(:card).permit(:title, :list_id, :due_date, :description, :completed, :archived)
+		params.require(:card).permit(:title, :list_id, :due_date, :description, :completed, :archived, :labels => [])
 	end
 end

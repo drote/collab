@@ -20,6 +20,20 @@ class LabelsPopover extends React.Component {
 		this.setState({labels: {...labels}});
 	}
 
+	handleLabelClick = (label) => {
+		const newLabels = { ...this.state.labels };
+
+		if (newLabels[label]) {
+			delete newLabels[label];
+		} else {
+			newLabels[label] = true;
+		}
+
+		console.log(newLabels);
+		this.props.onHandleLabelClick({labels: Object.keys(newLabels)});
+		this.setState({labels: newLabels});
+	} 
+
 	render() {
 		return (
 			<div className="popover labels">
@@ -42,7 +56,7 @@ class LabelsPopover extends React.Component {
 			        		return (
 			        			<li
 			        				key={idx}
-			        				onClick={() => this.props.onHandleLabelClick({labels: [c]})}
+			        				onClick={() => this.handleLabelClick(c)}
 			        			>
 			        				<div className={`label-background ${c}`}>
 			        				{ this.state.labels[c] ?
