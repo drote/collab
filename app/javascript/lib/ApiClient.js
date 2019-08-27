@@ -92,6 +92,12 @@ const apiClient = {
       .then(unwrapData)
       .then(callback)
       .catch(logError);
+  },
+  deleteCard: (id, callback) => {
+    return axios.delete(routes.cardUrl(id))
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
   }
 };
 

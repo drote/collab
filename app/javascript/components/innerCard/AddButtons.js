@@ -23,7 +23,6 @@ const AddButtons = (props) => {
       	Due Date
       </li>
 
-      <li className="attachment-button not-implemented"><i className="attachment-icon sm-icon"></i>Attachment</li>
     </ul>
 	);
 }

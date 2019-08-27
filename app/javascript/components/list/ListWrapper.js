@@ -91,6 +91,7 @@ class ListWrapper extends React.Component {
                   
                   <CardBucket
                     listId={this.props.id}
+                    boardId={this.props.boardId}
                     onToggleForm={this.handleToggleCardFormClick}
                     onFormSubmit={this.props.onAddCardSubmit}
                   />

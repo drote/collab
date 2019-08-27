@@ -29,7 +29,6 @@ class LabelsPopover extends React.Component {
 			newLabels[label] = true;
 		}
 
-		console.log(newLabels);
 		this.props.onHandleLabelClick({labels: Object.keys(newLabels)});
 		this.setState({labels: newLabels});
 	} 

@@ -2,7 +2,7 @@ import React from 'react';
 import CardsInListContainer from './CardsInListContainer';
 import ToggleableNewCardForm from './ToggleableNewCardForm';
 
-const CardBucket = ({ listId, onToggleForm, onFormSubmit }) => {
+const CardBucket = ({ listId, boardId, onToggleForm, onFormSubmit }) => {
   return (
     <React.Fragment>
       <CardsInListContainer

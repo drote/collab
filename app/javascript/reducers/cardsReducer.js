@@ -17,6 +17,8 @@ export default function cardsReducer(state = [], action) {
 			return state.filter(c => c.id !== action.card.id).concat({...cardWithoutComments});
 		case 'UPDATE_CARD_FAILURE':
 			return state.map(c => c.id === action.id ? {...c} : c);
+		case 'DELETE_CARD_SUCCESS':
+			return state.filter(c => c.id !== action.id);
 		default:
 			return state;
 	}

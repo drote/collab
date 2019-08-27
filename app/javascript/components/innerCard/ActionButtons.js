@@ -6,10 +6,13 @@ const ActionButtons = (props) => {
 			return (
 				<React.Fragment>
 					<li
-						class="unarchive-button"
+						className="unarchive-button"
 						onClick={() => props.onUpdateCard({archived: false})}
-					><i class="send-icon sm-icon"></i>Send to board</li>
-					<li class="red-button"><i class="minus-icon sm-icon"></i>Delete</li>
+					><i className="send-icon sm-icon"></i>Send to board</li>
+					<li
+						className="red-button"
+						onClick={props.onDeleteCard}
+					><i className="minus-icon sm-icon"></i>Delete</li>
 				</React.Fragment>
 			);
 		} else {
@@ -26,9 +29,8 @@ const ActionButtons = (props) => {
 	  <ul>
 	    <li className="move-button"><i className="forward-icon sm-icon"></i>Move</li>
 	    <li className="copy-button"><i className="card-icon sm-icon"></i>Copy</li>
-	    <li className="subscribe-button"><i className="sub-icon sm-icon"></i>Subscribe<i className="check-icon sm-icon"></i></li>
 	    <hr />
-			{ archiveButtons(props.card.archived)}
+			{ archiveButtons(props.card.archived) }
 	  </ul>
 	)
 }

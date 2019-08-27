@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     card,
+    history: ownProps.history
   };
 };
 
@@ -22,6 +23,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onUpdateCard: (attrs) => {
       dispatch(actions.updateCard(id, attrs));
       dispatch(addAction({card_id: id, text: getActionText(attrs)}));
+    },
+    onDeleteCard: () => {
+      dispatch(actions.deleteCard(id));
+      ownProps.history.goBack();
     }
   };
 };

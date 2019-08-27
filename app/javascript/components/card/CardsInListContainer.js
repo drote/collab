@@ -6,7 +6,8 @@ import { getCardsFromList } from '../../lib/selectors';
 const mapStateToProps = (state, ownProps) => {
   return {
     cards: getCardsFromList(state, ownProps.listId),
-    listId: ownProps.listId
+    listId: ownProps.listId,
+    boardId: ownProps.boardId
   };
 }
 

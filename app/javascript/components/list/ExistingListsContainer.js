@@ -5,7 +5,7 @@ import { getListsFromBoard } from '../../lib/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    lists: getListsFromBoard(state, ownProps.boardId)
+    lists: getListsFromBoard(state, ownProps.boardId),
   };
 }
 

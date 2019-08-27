@@ -23,7 +23,15 @@ function updateCardSuccess(card) {
 }
 
 function updateCardFailure(cardId) {
-	return { type: types.UPDATE_CARD_FAILURE, id: cardId }
+	return { type: types.UPDATE_CARD_FAILURE }
+}
+
+function deleteCardSuccess(cardId) {
+	return { type: types.DELETE_CARD_SUCCESS, id: cardId }
+}
+
+function deleteCardFailure(cardId) {
+	return { type: types.DELETE_CARD_FAILURE }
 }
 
 export function addCard(card) {
@@ -52,6 +60,16 @@ export function updateCard(cardId, attrs) {
 			dispatch(updateCardSuccess(returnedCard));
 		}).catch(() => {
 			dispatch(updateCardFailure(cardId));
+		});
+	}
+}
+
+export function deleteCard(cardId) {
+	return function(dispatch) {
+		apiClient.deleteCard(cardId, res => {
+			dispatch(deleteCardSuccess(res.id));
+		}).catch(() => {
+			dispatch(deleteCardFailure(cardId));
 		});
 	}
 }

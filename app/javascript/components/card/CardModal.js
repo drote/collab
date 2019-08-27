@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import DetailsSection from '../innerCard/DetailsSection';
 import CommentFormContainer from '../innerCard/CommentFormContainer';
@@ -51,10 +51,19 @@ class CardModal extends React.Component {
   render() {
     if (!this.props.card) return null;
 
+    if (this.state.deleted) {
+      return (
+        <Redirect to={`/boards/${this.props.boardId}`} />
+      )
+    }
+
     const { title, list_name, ...card } = this.props.card;
     return (
       <div id="modal-container">
-        <div className="screen"></div>
+        <div
+          className="screen"
+          onClick={() => this.props.history.goBack()}
+        ></div>
         <div id="modal">
 
           <Link to={`/boards/${card.board_id}`}>
@@ -62,7 +71,7 @@ class CardModal extends React.Component {
           </Link>
           {
             card.archived ?
-              <div className="archived-banner"><i class="file-icon icon"></i>This card is archived.</div> :
+              <div className="archived-banner"><i className="file-icon icon"></i>This card is archived.</div> :
               null
           }
 
@@ -94,6 +103,7 @@ class CardModal extends React.Component {
             onUpdateCard={this.props.onUpdateCard}
             onToggleEditDate={this.handleToggleEditDate}
             onToggleEditLabels={this.handleToggleEditlabels}
+            onDeleteCard={this.props.onDeleteCard}
           />
 
           { this.state.editingDate ?

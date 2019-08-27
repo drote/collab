@@ -15,6 +15,7 @@ const ButtonsList = (props) => {
       	<ActionButtons
 					card={props.card}
 					onUpdateCard={props.onUpdateCard}
+          onDeleteCard={props.onDeleteCard}
 				/>
 
       <ul className="light-list">

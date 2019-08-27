@@ -34,6 +34,17 @@ class Api::CardsController < ApplicationController
 			render 'api/shared/error', status: :unprocessable_entity
 	end
 
+	def destroy
+		@card = Card.find(params[:id])
+
+		if @card.destroy!
+			render :destroy
+		else
+			@error = @card.errors.full_messages.join(', ')
+			render 'api/shared/error', status: :unprocessable_entity
+		end
+	end
+
 	private
 
 	def card_params
