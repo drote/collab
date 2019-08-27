@@ -13,7 +13,7 @@ import LabelsPopover from '../shared/LabelsPopover';
 class CardModal extends React.Component {
   state = {
     editingDate: false,
-    editingLabels: true
+    editingLabels: false
   }
 
   componentDidMount() {
@@ -39,6 +39,12 @@ class CardModal extends React.Component {
   handleToggleEditDate = () => {
     this.setState({
       editingDate: !this.state.editingDate
+    });
+  }
+
+  handleToggleEditlabels = () => {
+    this.setState({
+      editingLabels: !this.state.editingLabels
     });
   }
 
@@ -73,6 +79,7 @@ class CardModal extends React.Component {
                 {...card}
                 onUpdateCard={this.props.onUpdateCard}
                 onToggleEditDate={this.handleToggleEditDate}
+                onToggleEditLabels={this.handleToggleEditlabels}
               />
 
               {this.commentForm(card.id)}
@@ -86,6 +93,7 @@ class CardModal extends React.Component {
             card={card}
             onUpdateCard={this.props.onUpdateCard}
             onToggleEditDate={this.handleToggleEditDate}
+            onToggleEditLabels={this.handleToggleEditlabels}
           />
 
           { this.state.editingDate ?
@@ -102,6 +110,7 @@ class CardModal extends React.Component {
               <LabelsPopover
               labels={card.labels}
               onHandleLabelClick={this.props.onUpdateCard}
+              closePopover={() => this.setState({editingLabels: false})}
               />
             :
               null
