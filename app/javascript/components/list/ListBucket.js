@@ -6,7 +6,10 @@ const ListBucket = (props) => {
   return (
     <div id="list-container" className="list-container">
         <ExistingListsContainer boardId={props.boardId} />
-        <ToggleableNewListForm addList={props.addList}/>
+        <ToggleableNewListForm
+        	addList={props.addList}
+        	boardId={props.boardId}
+        />
     </div>
   );
 };

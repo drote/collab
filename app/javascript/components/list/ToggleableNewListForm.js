@@ -14,17 +14,17 @@ class ToggleableNewListForm extends React.Component {
     this.setState({ isEditing: true });
   };
 
-  handleAddClick = (e) => {
-    e.stopPropagation();
-    
-    this.props.addList(this.state.title);
+  handleAddClick = () => {    
+    this.props.addList(this.state.title, this.props.boardId);
 
+    this.resetState();
+  };
+
+  resetState = () => {
     this.setState({
       isEditing: false,
       title: ''
     });
-
-    console.log(this.state)
   };
 
   render() {
@@ -42,9 +42,13 @@ class ToggleableNewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
-            onClick={this.handleAddClick}
+            onClick={(e) => {
+              e.stopPropagation();
+
+              this.handleAddClick()
+            }}
           />
-        <i className="x-icon icon" onClick={this.handleCancelClick}></i>
+        <i className="x-icon icon" onClick={this.resetState}></i>
         </div>
       </div>
     );

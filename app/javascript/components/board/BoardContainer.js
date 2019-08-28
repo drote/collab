@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) =>{
     if (card) {
       id = getBoardIdForCard(state, +ownProps.match.params.id);
     }
+
   } else {
     id = +ownProps.match.params.id;
   }
@@ -35,10 +36,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(actions.fetchBoard(id))
     },
 
-		addList: (title) => {
+		addList: (title, board_id) => {
 			dispatch(addList({
 				title,
-				board_id: id
+				board_id
 			}))
 		},
   }
